@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.study.library.BookMapper"> 
+	<select id="listBook" resultType="BookDTO">
+		select * from book
+	</select>
+	
+	<insert id="insertBook" parameterType="BookDTO">
+		insert into book values(book_seq.nextval, #{title}, #{writer},#{category}, sysdate)
+	</insert>
+	
+	<select id="selectbyTitle" parameterType="String" resultType="BookDTO">
+		select * from book where title = #{title}
+	</select>
+	
+	<select id="selectbyWriter" parameterType="String" resultType="BookDTO">
+		select * from book where writer = #{writer}
+	</select>
+	
+	<delete id="deleteBook" parameterType="int">
+		delete from book where no=#{no}
+	</delete>
+	
+	
+	
+</mapper>
